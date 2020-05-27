@@ -1,0 +1,54 @@
+﻿@model MVC_Demo.Models.StudentModel
+@{
+    ViewBag.Title = "EditRecord";
+    Layout = "~/Views/Shared/_masterlayout.cshtml";
+
+}
+
+<h2>Edit Student Record</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            @Html.ActionLink("Go To Student List", "GetRecord")  <br />
+            @using (Html.BeginForm("EditRecord", "Student", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.StudentId)
+                    @Html.LabelFor(m => m.FirstName)
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MiddleName)
+                    @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MiddleName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.LastName)
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    Male
+                    @Html.RadioButtonFor(m => m.Gender, "Male")
+                    FeMale
+                    @Html.RadioButtonFor(m => m.Gender, "FeMale")
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.DateOfBirth)
+                    @Html.TextBoxFor(m => m.DateOfBirth,"", new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IsActive)
+                    @Html.CheckBoxFor(m => m.IsActive)
+                </div>
+              <div class="form-group">
+                  <button type="submit" class="btn btn-success" >Update</button>
+              </div>
+              <label style="color:green">@ViewBag.Message</label>
+            }
+        </div>
+    </div>
+</div>
+

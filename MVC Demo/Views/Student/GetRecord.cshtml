@@ -1,0 +1,41 @@
+﻿@model  IEnumerable< MVC_Demo.Models.StudentModel>
+@{
+    ViewBag.Title = "GetRecord";
+    Layout = "~/Views/Shared/_masterlayout.cshtml";
+}
+
+<h2>Student Record</h2>
+@Html.ActionLink("Student Foam","Index")
+<table class="table table-bordered table-responsive table-hover"
+    <tr>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Gender </th>
+        <th>Is Active </th>
+        <th>Action</th>
+</tr>
+        @{
+            foreach (var item in Model)
+            {
+<tr>
+           <td>@item.FirstName</td>
+           <td>@item.MiddleName</td>
+           <td>@item.LastName</td>
+           <td>@item.DateOfBirth.ToString("dd/MM/yyyy")</td>
+           <td>@item.Gender</td>
+           <td>@item.IsActive</td>
+           <td>
+               @Html.ActionLink("Edit", "EditRecord", new { id = item.StudentId })|@Html.ActionLink("Delete", "DeleteRecord", new { id = item.StudentId })
+           </td>
+
+       </tr>
+       
+               
+    }
+            
+            
+        }
+</table>
+<label style="color:green">@ViewBag.Message</label>

@@ -1,0 +1,63 @@
+﻿@model MVC_Demo.Models.StudentModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_masterlayout.cshtml";
+}
+
+<h2>Student Registation Foam</h2>
+@Html.ActionLink("Student List", "GetRecord")
+<div class="container">
+
+    <div class="col-lg-6">
+        @using (Html.BeginForm("SaveRegistration", "Student", FormMethod.Post))
+        {
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.MiddleName)
+                @Html.TextBoxFor(m => m.MiddleName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.DateOfBirth)
+                @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control", @type = "date" })
+            </div>
+
+            <div class="form-group">
+                Male
+                @Html.RadioButtonFor(model => model.Gender, "Male")
+                FeMale
+                @Html.RadioButtonFor(model => model.Gender, "FeMale")
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.IsActive)
+                @Html.CheckBoxFor(m => m.IsActive)
+            </div>
+
+
+            <div class="form-group">
+                <button type="submit" class="btn-success">Submit</button>
+            </div>
+
+            <label style="color:green">@ViewBag.Message</label>
+            @*<label style="color:green">@ViewBag.stdmodel.FirstName</label>*@
+
+
+            @Html.ActionLink("Logout","Index" ,"Account")
+
+
+        }
+    </div>
+</div>
